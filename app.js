@@ -7,7 +7,7 @@
   async function openVisit() {
     retry.hidden = true;
     if (!token) {
-      status.textContent = "請使用活動提供的 QR Code 開啟此頁面。";
+      status.textContent = "此公開頁僅供活動 QR Code 入口；請使用活動提供的 QR Code 開啟此頁面。";
       return;
     }
     if (!apiOrigin) {
