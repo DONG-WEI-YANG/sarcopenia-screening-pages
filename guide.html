@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#113A5D" />
+    <title>第一人稱定位輔助</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="guide-page">
+    <main class="guide-shell" aria-labelledby="guide-title">
+      <a class="back" href="index.html">← 返回篩檢入口</a>
+      <p class="eyebrow">只看腳與地面</p>
+      <h1 id="guide-title">第一人稱<br />定位輔助</h1>
+      <div class="mode-switch" role="group" aria-label="測試類型">
+        <button class="mode active" data-mode="sit" type="button">五次坐站</button>
+        <button class="mode" data-mode="walk" type="button">6 公尺步行</button>
+      </div>
+      <section class="camera-stage" data-mode="sit" aria-live="polite">
+        <video id="preview" playsinline muted></video>
+        <div class="overlay sit-overlay" aria-hidden="true"><i></i><i></i><b>椅腳／雙腳基準線</b></div>
+        <div class="overlay walk-overlay" aria-hidden="true"><i></i><i></i><b>沿中央線前進至終點</b></div>
+        <p id="camera-status">點選下方按鈕，讓鏡頭只顯示腳邊地面。</p>
+      </section>
+      <button id="start-camera" class="primary" type="button">開啟後鏡頭</button>
+      <button id="stop-camera" class="secondary" type="button" hidden>關閉鏡頭</button>
+      <section class="instructions">
+        <p id="instruction"><strong>坐站：</strong>手機朝下，讓左右腳落在兩個定位框；椅腳對齊虛線即可。</p>
+        <p>影像只在此手機即時預覽，不會錄影、上傳或儲存。任何時候都可關閉鏡頭並改用手動計時。</p>
+      </section>
+    </main>
+    <script src="guide.js"></script>
+  </body>
+</html>
