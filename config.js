@@ -1,2 +1,4 @@
-// Public configuration only. Set apiOrigin to the Hugging Face Space HTTPS origin before release.
-window.SCREENING_CONFIG = { apiOrigin: "" };
+// Public configuration only. Participant API is hosted on Vercel.
+window.SCREENING_CONFIG = {
+  apiOrigin: "https://phase-1-rwd-screening.vercel.app",
+};
