@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#113A5D" />
+    <title>肌少症風險篩檢</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="screen" aria-labelledby="title">
+      <div class="path" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="eyebrow">活動篩檢入口</p>
+      <h1 id="title">肌少症<br />風險篩檢</h1>
+      <p class="lead">掃描活動 QR Code 後，系統會以一次性權杖確認本次篩檢。</p>
+      <section class="card" aria-live="polite">
+        <p id="status">正在讀取 QR 權杖…</p>
+        <button id="retry" type="button" hidden>重新確認</button>
+      </section>
+      <p class="note">不收集電話、姓名或裝置識別資料。此服務提供風險篩檢，不作為診斷依據。</p>
+    </main>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
