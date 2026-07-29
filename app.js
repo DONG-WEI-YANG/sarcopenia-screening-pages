@@ -23,7 +23,7 @@
       });
       if (!response.ok) throw new Error("invalid");
       const { visitId } = await response.json();
-      location.replace(`${apiOrigin}/s/${encodeURIComponent(token)}#visit=${encodeURIComponent(visitId)}`);
+      location.replace(`${apiOrigin}/s#token=${encodeURIComponent(token)}&visit=${encodeURIComponent(visitId)}`);
     } catch {
       status.textContent = "此檢測連結無效、已過期，或暫時無法連線。";
       retry.hidden = false;
