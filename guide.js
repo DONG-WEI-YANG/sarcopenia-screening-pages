@@ -12,6 +12,7 @@
   let stream;
   let timerFrame;
   let testStartedAt;
+  let lastDisplayedElapsed;
 
   const copy = {
     sit: "坐站：手機朝下，讓左右腳落在兩個定位框；椅腳對齊虛線即可。",
@@ -31,7 +32,14 @@
   }
 
   function updateTimer(now) {
-    testTimer.value = formatElapsed(now - testStartedAt);
+    const formatted = formatElapsed(now - testStartedAt);
+    // Only touch the DOM when the displayed tenth-of-a-second value actually
+    // changes (~10/sec, not every ~60Hz animation frame), so the running timer
+    // doesn't compete with touch input on the start/stop buttons.
+    if (formatted !== lastDisplayedElapsed) {
+      lastDisplayedElapsed = formatted;
+      testTimer.value = formatted;
+    }
     timerFrame = requestAnimationFrame(updateTimer);
   }
 
@@ -91,6 +99,7 @@
     document.querySelectorAll(".mode").forEach((button) => { button.disabled = true; });
     testStatus.textContent = `${selectedMode()} 進行中；完成後請按停止。`;
     testTimer.value = "00:00.0";
+    lastDisplayedElapsed = "00:00.0";
     timerFrame = requestAnimationFrame(updateTimer);
   });
 
