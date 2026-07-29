@@ -16,6 +16,7 @@
         <button class="mode active" data-mode="sit" type="button">五次坐站</button>
         <button class="mode" data-mode="walk" type="button">6 公尺步行</button>
       </div>
+      <p id="camera-alert" class="camera-alert" role="alert" hidden></p>
       <section class="camera-stage" data-mode="sit" aria-live="polite">
         <video id="preview" playsinline muted></video>
         <div class="overlay sit-overlay" aria-hidden="true"><i></i><i></i><b>椅腳／雙腳基準線</b></div>
@@ -35,6 +36,68 @@
       <section class="instructions">
         <p id="instruction"><strong>坐站：</strong>手機朝下，讓左右腳落在兩個定位框；椅腳對齊虛線即可。</p>
         <p>影像與此頁計時只在此手機即時使用，不會錄影、上傳或儲存；停止後請將時間手動填入正式篩檢流程。</p>
+      </section>
+
+      <section class="fallback-calc" aria-labelledby="fallback-title">
+        <p class="eyebrow">QR 或正式篩檢網頁暫時無法使用時</p>
+        <h2 id="fallback-title">離線風險判斷（備援用）</h2>
+        <p class="fallback-note">
+          先用上方計時器量測五次坐站與 6 公尺步行，再填寫 SARC-F
+          問卷，即可在本機算出與正式流程相同的風險建議。恢復連線後請改用正式流程建立正式紀錄。
+        </p>
+        <dl class="captured-summary" aria-live="polite">
+          <div>
+            <dt>五次坐站</dt>
+            <dd id="captured-sit">尚未量測</dd>
+          </div>
+          <div>
+            <dt>6 公尺步行</dt>
+            <dd id="captured-walk">尚未量測</dd>
+          </div>
+        </dl>
+        <form id="sarcf-form" class="sarcf-form" autocomplete="off">
+          <fieldset>
+            <legend>搬運重物</legend>
+            <label><input type="radio" name="sarcf-carry" value="0" />沒有困難</label>
+            <label><input type="radio" name="sarcf-carry" value="1" />困難</label>
+            <label><input type="radio" name="sarcf-carry" value="2" />非常困難</label>
+          </fieldset>
+          <fieldset>
+            <legend>步行協助</legend>
+            <label><input type="radio" name="sarcf-walk" value="0" />沒有困難</label>
+            <label><input type="radio" name="sarcf-walk" value="1" />困難</label>
+            <label><input type="radio" name="sarcf-walk" value="2" />非常困難</label>
+          </fieldset>
+          <fieldset>
+            <legend>從椅子起身</legend>
+            <label><input type="radio" name="sarcf-rise" value="0" />沒有困難</label>
+            <label><input type="radio" name="sarcf-rise" value="1" />困難</label>
+            <label><input type="radio" name="sarcf-rise" value="2" />非常困難</label>
+          </fieldset>
+          <fieldset>
+            <legend>爬樓梯</legend>
+            <label><input type="radio" name="sarcf-stairs" value="0" />沒有困難</label>
+            <label><input type="radio" name="sarcf-stairs" value="1" />困難</label>
+            <label><input type="radio" name="sarcf-stairs" value="2" />非常困難</label>
+          </fieldset>
+          <fieldset>
+            <legend>跌倒次數</legend>
+            <label><input type="radio" name="sarcf-falls" value="0" />從未跌倒</label>
+            <label><input type="radio" name="sarcf-falls" value="1" />跌倒 1 至 3 次</label>
+            <label><input type="radio" name="sarcf-falls" value="2" />跌倒 4 次以上</label>
+          </fieldset>
+        </form>
+        <button id="calculate-result" class="primary" type="button" disabled>
+          計算風險建議
+        </button>
+        <section id="fallback-result" class="fallback-result" hidden aria-live="polite">
+          <p class="final-screening-badge" id="result-badge"></p>
+          <h3 id="result-title"></h3>
+          <p id="result-detail"></p>
+          <p class="fallback-disclaimer">
+            本結果僅供風險篩檢，不作為診斷依據；如有不適或疑慮，請諮詢醫療專業人員。資料只在此頁面顯示，不會上傳或儲存，請由工作人員手動記錄。
+          </p>
+        </section>
       </section>
     </main>
     <script src="guide.js"></script>
