@@ -24,9 +24,17 @@
       </section>
       <button id="start-camera" class="primary" type="button">開啟後鏡頭</button>
       <button id="stop-camera" class="secondary" type="button" hidden>關閉鏡頭</button>
+      <section class="test-controls" aria-label="本項測試控制">
+        <p id="test-status" role="status">定位完成後，請由受測者按下開始；鏡頭不是必要條件。</p>
+        <output id="test-timer" aria-live="off">00:00.0</output>
+        <div class="test-actions">
+          <button id="start-test" class="primary" type="button">開始本項測試</button>
+          <button id="stop-test" class="danger" type="button" hidden>停止本項測試</button>
+        </div>
+      </section>
       <section class="instructions">
         <p id="instruction"><strong>坐站：</strong>手機朝下，讓左右腳落在兩個定位框；椅腳對齊虛線即可。</p>
-        <p>影像只在此手機即時預覽，不會錄影、上傳或儲存。任何時候都可關閉鏡頭並改用手動計時。</p>
+        <p>影像與此頁計時只在此手機即時使用，不會錄影、上傳或儲存；停止後請將時間手動填入正式篩檢流程。</p>
       </section>
     </main>
     <script src="guide.js"></script>
