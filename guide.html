@@ -16,6 +16,20 @@
         <button class="mode active" data-mode="sit" type="button">五次坐站</button>
         <button class="mode" data-mode="walk" type="button">6 公尺步行</button>
       </div>
+      <fieldset class="assist-toggle">
+        <legend>輔助模式</legend>
+        <p id="assist-panel-reason" class="assist-toggle-reason" role="status" hidden></p>
+        <label class="assist-toggle-switch"><input id="assist-imu" type="checkbox" checked />感測器檢查</label>
+        <!-- Renamed from 感測器自動偵測: the guide's stopwatch is entirely
+             manual, so a label promising auto-detection overclaims. This
+             switch only gates whether 檢查感測器 may run its probe. -->
+        <p id="assist-imu-reason" class="assist-toggle-reason" role="status" hidden></p>
+        <label class="assist-toggle-switch"><input id="assist-camera" type="checkbox" checked />相機定位輔助</label>
+        <p id="assist-camera-reason" class="assist-toggle-reason" role="status" hidden></p>
+        <label class="assist-toggle-switch"><input id="assist-speech" type="checkbox" />語音提示</label>
+        <p id="assist-speech-reason" class="assist-toggle-reason" role="status" hidden></p>
+        <button id="assist-probe" class="secondary" type="button">檢查感測器</button>
+      </fieldset>
       <p id="camera-alert" class="camera-alert" role="alert" hidden></p>
       <section class="camera-stage" data-mode="sit" aria-live="polite">
         <video id="preview" playsinline muted></video>
@@ -27,7 +41,7 @@
       <button id="stop-camera" class="secondary" type="button" hidden>關閉鏡頭</button>
       <section class="test-controls" aria-label="本項測試控制">
         <p id="test-status" role="status">定位完成後，請由受測者按下開始；鏡頭不是必要條件。</p>
-        <output id="test-timer" aria-live="off">00:00.0</output>
+        <output id="test-timer" aria-live="off">0.0 秒</output>
         <div class="test-actions">
           <button id="start-test" class="primary" type="button">開始本項測試</button>
           <button id="stop-test" class="danger" type="button" hidden>停止本項測試</button>
@@ -90,16 +104,19 @@
         <button id="calculate-result" class="primary" type="button" disabled>
           計算風險建議
         </button>
+        <p id="fallback-calc-reason" class="assist-toggle-reason" role="status" hidden></p>
         <section id="fallback-result" class="fallback-result" hidden aria-live="polite">
           <p class="final-screening-badge" id="result-badge"></p>
           <h3 id="result-title"></h3>
           <p id="result-detail"></p>
+          <p id="result-action"></p>
           <p class="fallback-disclaimer">
             本結果僅供風險篩檢，不作為診斷依據；如有不適或疑慮，請諮詢醫療專業人員。資料只在此頁面顯示，不會上傳或儲存，請由工作人員手動記錄。
           </p>
         </section>
       </section>
     </main>
+    <script src="vendor/assist.js"></script>
     <script src="guide.js"></script>
   </body>
 </html>
